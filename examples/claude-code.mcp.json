@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "imho": {
+      "type": "http",
+      "url": "https://imho.run/mcp"
+    }
+  }
+}

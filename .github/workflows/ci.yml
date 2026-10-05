@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      smoke:
+        description: "Also run scripts/smoke_test.py against https://imho.run"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.12", "3.13"]
+    defaults:
+      run:
+        working-directory: python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Tests
+        run: uv run --isolated --python ${{ matrix.python }} --with pytest --with pytest-asyncio --with-editable . pytest -q
+      - name: Lint and types
+        if: matrix.python == '3.13'
+        run: |
+          uvx ruff check src tests
+          uvx ruff format --check src tests
+          uv run --isolated --python 3.13 --with mypy --with pytest --with-editable . mypy src tests
+      - name: Build
+        if: matrix.python == '3.13'
+        run: uv build
+
+  json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Example configs and metadata are valid JSON
+        run: for f in server.json glama.json examples/*.json; do python3 -m json.tool "$f" > /dev/null && echo "ok $f"; done
+
+  smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/smoke_test.py

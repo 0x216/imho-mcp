@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "imho": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://imho.run/mcp", "--transport", "http-only"]
+    }
+  }
+}

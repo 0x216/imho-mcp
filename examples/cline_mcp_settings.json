@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "imho": {
+      "type": "streamableHttp",
+      "url": "https://imho.run/mcp",
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
