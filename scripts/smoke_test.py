@@ -3,7 +3,7 @@
 
 Standard library only, so it runs anywhere with Python 3.8+:
 
-    python scripts/smoke_test.py            # 6 checks, about 7 requests
+    python scripts/smoke_test.py            # 11 checks, 11 requests
     python scripts/smoke_test.py --find     # also calls find_game_by_description
                                             # (slow, counts against its 20/day limit)
 
@@ -21,7 +21,15 @@ import urllib.request
 from typing import Any, Callable, Dict, List, Tuple
 
 UA = "imho-mcp-smoke-test/1.0 (+https://github.com/0x216/imho-mcp)"
-EXPECTED_TOOLS = {"games_like", "game_facts", "find_game_by_description"}
+EXPECTED_TOOLS = {
+    "games_like",
+    "recommend",
+    "game_facts",
+    "find_game_by_description",
+    "trending",
+    "new_releases",
+    "search_games",
+}
 
 
 def http(
@@ -51,7 +59,9 @@ class Smoke:
         self.rpc_id = 0
         self.failures = 0
 
-    def rpc(self, method: str, params: Any = None, timeout: float = 60.0) -> Dict[str, Any]:
+    def rpc(
+        self, method: str, params: Any = None, timeout: float = 60.0
+    ) -> Dict[str, Any]:
         self.rpc_id += 1
         body: Dict[str, Any] = {"jsonrpc": "2.0", "id": self.rpc_id, "method": method}
         if params is not None:
@@ -83,7 +93,8 @@ class Smoke:
         )
         info = result["serverInfo"]
         assert "tools" in result["capabilities"], "no tools capability"
-        return f"{info.get('title') or info['name']} {info['version']}, protocol {result['protocolVersion']}"
+        name = info.get("title") or info["name"]
+        return f"{name} {info['version']}, protocol {result['protocolVersion']}"
 
     def tools_list(self) -> str:
         tools: List[Dict[str, Any]] = self.rpc("tools/list")["tools"]
@@ -92,19 +103,25 @@ class Smoke:
         assert not missing, f"missing tools: {sorted(missing)}"
         for tool in tools:
             ann = tool.get("annotations") or {}
-            assert ann.get("readOnlyHint") is True, f"{tool['name']} is not readOnlyHint"
+            assert ann.get("readOnlyHint") is True, (
+                f"{tool['name']} is not readOnlyHint"
+            )
         return ", ".join(sorted(names))
 
     def mcp_games_like(self) -> str:
         result = self.rpc(
-            "tools/call", {"name": "games_like", "arguments": {"game": "Hollow Knight", "n": 3}}
+            "tools/call",
+            {"name": "games_like", "arguments": {"game": "Hollow Knight", "n": 3}},
         )
         assert result.get("isError") is False, result.get("content")
         data = result["structuredContent"]
         assert data["seed"]["appid"] == 367520, data["seed"]
         picks = data["results"]
         assert 1 <= len(picks) <= 3, f"{len(picks)} results"
-        assert all(p.get("why") and p.get("url", "").startswith("https://imho.run/") for p in picks)
+        assert all(
+            p.get("why") and p.get("url", "").startswith("https://imho.run/")
+            for p in picks
+        )
         return "; ".join(p["name"] for p in picks)
 
     def rest_games_like(self) -> str:
@@ -115,6 +132,43 @@ class Smoke:
         assert data["results"], "no results"
         return f"seed {data['seed']['name']}, {len(data['results'])} co-op picks"
 
+    def mcp_recommend(self) -> str:
+        args = {
+            "seeds": ["Stardew Valley", "Terraria"],
+            "n": 3,
+            "filters": {"coop": True, "exclude": ["pvp"]},
+        }
+        result = self.rpc("tools/call", {"name": "recommend", "arguments": args})
+        assert result.get("isError") is False, result.get("content")
+        data = result["structuredContent"]
+        assert [s["appid"] for s in data["seeds"]] == [413150, 105600], data["seeds"]
+        assert data["filters"]["coop"] is True
+        assert data["results"], "no results"
+        return "; ".join(p["name"] for p in data["results"])
+
+    def rest_trending(self) -> str:
+        status, data = http("GET", f"{self.base}/api/agent/trending?n=3")
+        assert status == 200, f"HTTP {status}: {data}"
+        assert data["status"] in ("ready", "collecting"), data.get("status")
+        if data["status"] == "ready":
+            assert data["results"], "status ready but no results"
+        return f"{data['status']}: " + "; ".join(p["name"] for p in data["results"])
+
+    def rest_new_releases(self) -> str:
+        status, data = http("GET", f"{self.base}/api/agent/new-releases?n=3")
+        assert status == 200, f"HTTP {status}: {data}"
+        assert data["kind"] == "released", data.get("kind")
+        return "; ".join(p["name"] for p in data["results"]) or "(empty)"
+
+    def rest_search(self) -> str:
+        status, data = http(
+            "GET", f"{self.base}/api/agent/search?q=hollow%20knight&n=3"
+        )
+        assert status == 200, f"HTTP {status}: {data}"
+        appids = [h["appid"] for h in data["results"]]
+        assert 367520 in appids, appids
+        return "; ".join(f"{h['name']} ({h['appid']})" for h in data["results"])
+
     def rest_game_facts(self) -> str:
         status, data = http("GET", f"{self.base}/api/agent/game-facts?q=1145360")
         assert status == 200, f"HTTP {status}: {data}"
@@ -124,19 +178,29 @@ class Smoke:
 
     def rest_not_found(self) -> str:
         status, data = http("GET", f"{self.base}/api/agent/game-facts?q=zzzzqqqxx")
-        assert status == 404 and data.get("error") == "not_found", f"HTTP {status}: {data}"
+        assert status == 404 and data.get("error") == "not_found", (
+            f"HTTP {status}: {data}"
+        )
         return "404 not_found"
 
     def openapi(self) -> str:
         status, data = http("GET", f"{self.base}/openapi.json")
         assert status == 200, f"HTTP {status}"
         assert str(data["openapi"]).startswith("3."), data.get("openapi")
-        return f"OpenAPI {data['openapi']}, {len(data['paths'])} paths"
+        paths = set(data["paths"])
+        want = {
+            f"/api/agent/{p}"
+            for p in ("games-like", "game-facts", "recommend", "trending")
+        }
+        assert want <= paths, f"missing: {sorted(want - paths)}"
+        return f"OpenAPI {data['openapi']}, {len(paths)} paths"
 
     def find_game(self) -> str:
         args = {"description": "you play a cat in a cyberpunk city with a small drone"}
         result = self.rpc(
-            "tools/call", {"name": "find_game_by_description", "arguments": args}, timeout=120.0
+            "tools/call",
+            {"name": "find_game_by_description", "arguments": args},
+            timeout=120.0,
         )
         assert result.get("isError") is False, result.get("content")
         data = result["structuredContent"]
@@ -148,7 +212,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--base-url", default="https://imho.run")
     parser.add_argument(
-        "--find", action="store_true", help="also call find_game_by_description (rate-limited)"
+        "--find",
+        action="store_true",
+        help="also call find_game_by_description (rate-limited)",
     )
     args = parser.parse_args()
 
@@ -156,9 +222,13 @@ def main() -> int:
     s.check("MCP initialize", s.initialize)
     s.check("MCP tools/list", s.tools_list)
     s.check("MCP games_like", s.mcp_games_like)
+    s.check("MCP recommend", s.mcp_recommend)
     s.check("REST games-like", s.rest_games_like)
     s.check("REST game-facts", s.rest_game_facts)
     s.check("REST not found", s.rest_not_found)
+    s.check("REST trending", s.rest_trending)
+    s.check("REST new-releases", s.rest_new_releases)
+    s.check("REST search", s.rest_search)
     s.check("OpenAPI", s.openapi)
     if args.find:
         s.check("MCP find_game_by_description", s.find_game)

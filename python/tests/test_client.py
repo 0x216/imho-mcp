@@ -83,6 +83,97 @@ def test_games_like_rejects_bad_n(n: int) -> None:
         client.games_like("x", n=n)
 
 
+def test_recommend_repeats_list_params() -> None:
+    seen: List[httpx.Request] = []
+    client = make_client(lambda r: httpx.Response(200, json={"results": []}), seen)
+    client.recommend(
+        ["Stardew Valley", "Terraria"],
+        n=5,
+        coop="local",
+        steam_deck="playable",
+        exclude=["pvp", "grind"],
+        exclude_tags=["Horror"],
+        liked=["Valheim"],
+        disliked=["Rust"],
+        preferences="cozy farming",
+        year_min=2015,
+        popularity_bias=-0.5,
+    )
+    req = seen[0]
+    assert req.url.path == "/api/agent/recommend"
+    assert req.url.params.get_list("seed") == ["Stardew Valley", "Terraria"]
+    assert req.url.params.get_list("exclude") == ["pvp", "grind"]
+    assert req.url.params.get_list("exclude_tags") == ["Horror"]
+    assert req.url.params.get_list("liked") == ["Valheim"]
+    assert req.url.params.get_list("disliked") == ["Rust"]
+    assert req.url.params["coop"] == "local"
+    assert req.url.params["deck"] == "playable"
+    assert req.url.params["preferences"] == "cozy farming"
+    assert req.url.params["year_min"] == "2015"
+    assert req.url.params["popularity_bias"] == "-0.5"
+    assert "year_max" not in req.url.params and "upcoming" not in req.url.params
+
+
+def test_recommend_single_string_seed_and_defaults() -> None:
+    seen: List[httpx.Request] = []
+    client = make_client(lambda r: httpx.Response(200, json={"results": []}), seen)
+    client.recommend("Hades")
+    assert list(seen[0].url.params.multi_items()) == [
+        ("seed", "Hades"),
+        ("n", "10"),
+        ("lang", "en"),
+    ]
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    [
+        {"seeds": []},
+        {"seeds": ["a", "b", "c", "d"]},
+        {"seeds": ["a"], "n": 25},
+        {"seeds": ["a"], "popularity_bias": 2.0},
+    ],
+)
+def test_recommend_rejects_bad_input(kwargs: Dict[str, Any]) -> None:
+    client = make_client(lambda r: httpx.Response(200, json={}), [])
+    with pytest.raises(ValueError):
+        client.recommend(**kwargs)
+
+
+def test_trending_new_releases_search_paths() -> None:
+    seen: List[httpx.Request] = []
+    client = make_client(lambda r: httpx.Response(200, json={"results": []}), seen)
+    client.trending(kind="breakouts", n=3)
+    client.new_releases(upcoming=True, coop=True, n=4, lang="ru")
+    client.new_releases()
+    client.search_games("hollow kn", n=2)
+    got = [(r.url.path, list(r.url.params.multi_items())) for r in seen]
+    assert got == [
+        ("/api/agent/trending", [("kind", "breakouts"), ("n", "3"), ("lang", "en")]),
+        (
+            "/api/agent/new-releases",
+            [("n", "4"), ("lang", "ru"), ("upcoming", "true"), ("coop", "true")],
+        ),
+        ("/api/agent/new-releases", [("n", "10"), ("lang", "en")]),
+        ("/api/agent/search", [("q", "hollow kn"), ("n", "2")]),
+    ]
+
+
+@pytest.mark.parametrize(
+    "call",
+    [
+        lambda c: c.trending(kind="hot"),
+        lambda c: c.trending(n=21),
+        lambda c: c.search_games("x"),
+        lambda c: c.search_games("hades", n=11),
+    ],
+)
+def test_list_tools_reject_bad_input(call: Callable[[ImhoClient], Any]) -> None:
+    client = make_client(lambda r: httpx.Response(200, json={}), [])
+    with pytest.raises(ValueError):
+        call(client)
+
+
 def test_game_facts_not_found() -> None:
     body = {"source": "imho.run", "error": "not_found", "detail": "No Steam game matched 'zz'."}
     client = make_client(lambda r: httpx.Response(404, json=body), [])
@@ -214,3 +305,19 @@ def test_live_games_like_and_facts() -> None:
         assert facts["game"]["name"] == "Hades"
         with pytest.raises(NotFoundError):
             imho.game_facts("zzzzqqqxx")
+        recs = imho.recommend(["Stardew Valley", "Terraria"], n=3, coop=True)
+        assert [s["appid"] for s in recs["seeds"]] == [413150, 105600]
+        assert recs["results"] and all(p.get("why") for p in recs["results"])
+
+
+@pytest.mark.live
+@live
+def test_live_discovery_tools() -> None:
+    with ImhoClient() as imho:
+        trending = imho.trending(n=3)
+        assert trending["status"] in ("ready", "collecting")
+        assert len(trending["results"]) <= 3
+        releases = imho.new_releases(n=3)
+        assert releases["kind"] == "released"
+        hits = imho.search_games("hollow knight", n=3)["results"]
+        assert any(h["appid"] == 367520 for h in hits)

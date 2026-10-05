@@ -19,15 +19,19 @@ the Python client.
 
 ## Tools
 
-| Tool | What it does |
-| --- | --- |
-| `games_like` | Steam games similar to one game, ranked by imho.run's recommender, each with a one-line reason, price, Steam Deck status, year, review numbers, the imho.run page URL and the Steam URL. Filters: free only, co-op (any / online / local), Steam Deck verified or playable. |
-| `game_facts` | Public facts about one Steam game: year, developers, genres, top tags, price, Steam Deck status, review numbers, a summary mined from player reviews (difficulty, length, session shape, co-op, hooks, dealbreakers) and links. |
-| `find_game_by_description` | Identifies a game from what the user remembers (plot, look, platform, era). Returns ranked candidates with a reason each, a `confidence`, and a `find_game_url` that opens imho.run's Find a game page with the description filled in. Runs a language model, so it is slower and has a lower limit. |
+| Tool | Title | What it does | REST twin |
+| --- | --- | --- | --- |
+| `games_like` | Games like X | Steam games similar to one game, ranked by imho.run's recommender, each with a one-line reason, price, Steam Deck status, year, review numbers, the imho.run page URL and the Steam URL. Filters: free only, co-op (any / online / local), Steam Deck verified or playable. | `GET /api/agent/games-like` |
+| `recommend` | Recommend Steam games | Games for someone who likes 1-3 games, with the full filter set: no PvP / microtransactions / grind / hard / Early Access / VR-only, excluded Steam tags, release years, niche-to-popular slider, and free-text `preferences` ("cozy base building, no horror") read as Steam tags. Call it again with `liked` / `disliked` to refine. | `GET /api/agent/recommend` |
+| `game_facts` | Game facts | Public facts about one Steam game: year, developers, genres, top tags, price, Steam Deck status, review numbers, a summary mined from player reviews (difficulty, length, session shape, co-op, hooks, dealbreakers) and links. | `GET /api/agent/game-facts` |
+| `find_game_by_description` | Find a game by description | Identifies a game from what the user remembers (plot, look, platform, era). Returns ranked candidates with a reason each, a `confidence`, and a `find_game_url` that opens imho.run's Find a game page with the description filled in. Runs a language model, so it is slower and has a lower limit. | MCP only |
+| `trending` | Trending on Steam | Steam games trending now: `rising` (established games gaining reviews against their own baseline) or `breakouts` (new games taking off), with reviews this week and growth in %. | `GET /api/agent/trending` |
+| `new_releases` | New Steam releases | Well-rated Steam releases of the last 30 days (70%+ positive, 50+ positive reviews), or dated upcoming games; optionally co-op only. | `GET /api/agent/new-releases` |
+| `search_games` | Search Steam games by title | Steam games by title (typos, partial names, Russian names and acronyms work): appid, year, imho.run page and Steam link. | `GET /api/agent/search` |
 
-All three tools are annotated `readOnlyHint: true` and `destructiveHint: false`.
-The `game` argument accepts a name (typos and Russian titles work), a Steam
-appid or a Steam store URL. Answers come in English or Russian (`lang`).
+All tools are annotated `readOnlyHint: true` and `destructiveHint: false`.
+Arguments that take a game accept a name (typos and Russian titles work), a
+Steam appid or a Steam store URL. Answers come in English or Russian (`lang`).
 
 ### games_like
 
@@ -70,6 +74,58 @@ Arguments: `game` (required), `n` (1-20, default 10), `lang` (`en`/`ru`),
 Picks 2 and 3 were Ori and the Blind Forest: Definitive Edition ("Also
 Metroidvania, like Hollow Knight.") and Nine Sols ("Metroidvania with
 Sekiro-style parry combat and Taoist myth.").
+
+### recommend
+
+Arguments: `seeds` (required, 1-3 games), `liked` (up to 10, fill free seed
+slots), `disliked` (up to 20, never recommended), `preferences` (free text, up
+to 200 characters, any language), `n` (1-24, default 10), `lang`, and
+`filters`, all optional: `free`, `coop`, `coop_mode` (`online`/`local`/`any`),
+`deck` (`verified`/`playable`), `exclude` (any of `pvp`, `microtransactions`,
+`hard`, `grind`, `early_access`, `vr_only`), `exclude_tags` (Steam tags, up to
+10), `year_min`, `year_max` (default: this year), `upcoming`,
+`popularity_bias` (-1 = more niche, 1 = more popular).
+
+```json
+{"jsonrpc": "2.0", "id": 4, "method": "tools/call",
+ "params": {"name": "recommend",
+            "arguments": {"seeds": ["Stardew Valley", "Terraria"], "n": 3,
+                          "preferences": "cozy farming, no horror",
+                          "filters": {"coop": true, "exclude": ["pvp"]}}}}
+```
+
+The same call over REST repeats list parameters:
+`GET /api/agent/recommend?seed=Stardew%20Valley&seed=Terraria&n=3&coop=true&exclude=pvp&preferences=cozy%20farming%2C%20no%20horror`.
+Trimmed result (live, 2026-10-05):
+
+```json
+{
+  "seeds": [
+    { "appid": 413150, "name": "Stardew Valley", "url": "https://imho.run/games/413150/stardew-valley?utm_source=agent…" },
+    { "appid": 105600, "name": "Terraria", "url": "https://imho.run/games/105600/terraria?utm_source=agent…" }
+  ],
+  "filters": { "coop": true, "exclude": ["pvp"], "exclude_tags": ["Horror"], "year_max": 2026, "popularity_bias": 0.0 },
+  "preferences": { "applied": true, "prefer_tags": ["Farming Sim"], "avoid_tags": ["Horror"], "unmatched": [] },
+  "tool_url": "https://imho.run/?mode=anchor&seed=413150,105600&utm_source=agent…",
+  "results": [
+    {
+      "rank": 1,
+      "appid": 1084600,
+      "name": "My Time at Sandrock",
+      "why": "Also Farming Sim and Life Sim, like Stardew Valley.",
+      "similar_to": 413150,
+      "year": 2023,
+      "price": { "is_free": false, "amount": 11.99, "currency": "USD", "text": "11.99 USD" },
+      "steam_deck": "verified",
+      "reviews": { "total": 9082, "positive_pct": 94 }
+    }
+  ]
+}
+```
+
+Picks 2 and 3 were Dinkum and Coral Island. `preferences` was read as the
+Steam tag Farming Sim (preferred) and Horror (excluded); the `preferences`
+block says how the text was read, so the assistant can tell the user.
 
 ### game_facts
 
@@ -142,6 +198,101 @@ leaving them only in the text.
 When `confidence` is not high, give the user `find_game_url`: the page opens
 with the description filled in and searches only when they press the button.
 
+### trending
+
+Arguments: `kind` (`rising`, the default: established games gaining reviews
+against their own recent baseline; `breakouts`: new games taking off), `n`
+(1-20, default 10), `lang`.
+
+```json
+{"jsonrpc": "2.0", "id": 5, "method": "tools/call",
+ "params": {"name": "trending", "arguments": {"kind": "rising", "n": 2}}}
+```
+
+Trimmed result (live, 2026-10-05):
+
+```json
+{
+  "kind": "rising",
+  "status": "ready",
+  "updated_at": "2026-10-05T09:23:48.627465+00:00",
+  "page_url": "https://imho.run/trending?utm_source=agent…",
+  "results": [
+    {
+      "rank": 1,
+      "appid": 246420,
+      "name": "Kingdom Rush  - Tower Defense",
+      "url": "https://imho.run/games/246420/kingdom-rush-tower-defense?utm_source=agent…",
+      "price": { "is_free": false, "amount": 0.99, "currency": "USD", "text": "0.99 USD" },
+      "steam_deck": "playable",
+      "reviews": { "total": 4506, "positive_pct": 96 },
+      "reviews_week": 911,
+      "reviews_growth_pct": 935
+    }
+  ]
+}
+```
+
+Pick 2 was Ori and the Will of the Wisps (1,751 reviews this week). While the
+lists are still being collected, `status` is `collecting` and `results` is
+empty.
+
+### new_releases
+
+Arguments: `upcoming` (default `false`; `true` returns upcoming games that
+have a release date), `coop` (co-op only), `n` (1-20, default 10), `lang`.
+Released games are from the last 30 days, with 70%+ positive and 50+
+positive reviews.
+
+```json
+{"jsonrpc": "2.0", "id": 6, "method": "tools/call",
+ "params": {"name": "new_releases", "arguments": {"n": 2}}}
+```
+
+```json
+{
+  "kind": "released",
+  "coop": false,
+  "page_url": "https://imho.run/discover/new-releases?utm_source=agent…",
+  "results": [
+    {
+      "rank": 1,
+      "appid": 2288340,
+      "name": "ACE COMBAT 8: WINGS OF THEVE",
+      "price": { "is_free": false, "amount": 69.99, "currency": "USD", "text": "69.99 USD" },
+      "steam_deck": "unknown",
+      "reviews": { "total": 12593, "positive_pct": 79 },
+      "release_date": "Oct 1, 2026"
+    }
+  ]
+}
+```
+
+### search_games
+
+Arguments: `query` (required, 2-100 characters; typos, partial names, Russian
+names and acronyms work), `n` (1-10, default 5). Use it to check which game
+the user means or to get an appid; the other tools also take names directly.
+
+```json
+{"jsonrpc": "2.0", "id": 7, "method": "tools/call",
+ "params": {"name": "search_games", "arguments": {"query": "hollow kn", "n": 3}}}
+```
+
+```json
+{
+  "query": "hollow kn",
+  "results": [
+    { "appid": 367520, "name": "Hollow Knight", "year": 2017,
+      "url": "https://imho.run/games/367520/hollow-knight",
+      "steam_url": "https://store.steampowered.com/app/367520/" },
+    { "appid": 1030300, "name": "Hollow Knight: Silksong", "year": 2025,
+      "url": "https://imho.run/games/1030300/hollow-knight-silksong",
+      "steam_url": "https://store.steampowered.com/app/1030300/" }
+  ]
+}
+```
+
 ## REST API
 
 Plain GET requests, JSON responses. The OpenAPI schema is at
@@ -151,12 +302,20 @@ Plain GET requests, JSON responses. The OpenAPI schema is at
 curl "https://imho.run/api/agent/games-like?q=hollow%20knight&n=3"
 curl "https://imho.run/api/agent/games-like?q=stardew%20valley&n=10&coop=true&deck=verified"
 curl "https://imho.run/api/agent/game-facts?q=1145360"
+curl "https://imho.run/api/agent/recommend?seed=Stardew%20Valley&seed=Terraria&coop=true&exclude=pvp"
+curl "https://imho.run/api/agent/trending?kind=rising&n=10"
+curl "https://imho.run/api/agent/new-releases?n=10"
+curl "https://imho.run/api/agent/search?q=hollow%20kn&n=5"
 ```
 
 | Endpoint | Parameters |
 | --- | --- |
 | `GET /api/agent/games-like` | `q` (required: name, appid or Steam URL), `n` (1-20, default 10), `lang` (`en`/`ru`), `free` (`true`/`false`), `coop` (`true`, `online` or `local`), `deck` (`verified`/`playable`) |
+| `GET /api/agent/recommend` | `seed` (1-3, repeat the parameter), `n` (1-24), `lang`, `free`, `coop`, `deck`, `exclude` (repeat or comma-separate), `exclude_tags` (repeat), `year_min`, `year_max`, `upcoming`, `popularity_bias` (-1..1), `preferences` (text), `liked` (repeat), `disliked` (repeat) |
 | `GET /api/agent/game-facts` | `q` (required), `lang` |
+| `GET /api/agent/trending` | `kind` (`rising`/`breakouts`), `n` (1-20), `lang` |
+| `GET /api/agent/new-releases` | `upcoming` (`true`: dated upcoming games), `coop`, `n` (1-20), `lang` |
+| `GET /api/agent/search` | `q` (required, 2-100 characters), `n` (1-10, default 5) |
 
 `find_game_by_description` is available only through MCP.
 
@@ -169,6 +328,7 @@ returns `isError: true` with the reason as text.
 
 - 30 requests a minute and 1,000 a day per IP, across REST and MCP.
 - `find_game_by_description`: 3 a minute and 20 a day per IP.
+- `recommend`: 10 new (uncached) combinations a minute and 200 a day per IP.
 - Responses are cached on the server, so repeating a query is cheap.
 
 When you show results to people, credit imho.run ("Recommendations by
@@ -292,7 +452,12 @@ Windsurf infer it from the URL.
 
 ## Python client
 
-[`python/`](python/) holds `imho`, a typed httpx client for the same API:
+[`python/`](python/) holds [`imho`](https://pypi.org/project/imho/), a typed
+httpx client for the same API (sync and async):
+
+```bash
+pip install imho
+```
 
 ```python
 from imho import ImhoClient
@@ -300,33 +465,39 @@ from imho import ImhoClient
 with ImhoClient() as imho:
     for game in imho.games_like("Hollow Knight", n=3, steam_deck="verified")["results"]:
         print(game["name"], "-", game["why"])
+    picks = imho.recommend(["Stardew Valley", "Terraria"], coop=True, exclude=["pvp"])
+    hot = imho.trending(n=5)
 ```
 
-It is not on PyPI yet. Install from this repository:
-
-```bash
-pip install "git+https://github.com/0x216/imho-mcp#subdirectory=python"
-```
-
-See [`python/README.md`](python/README.md) for the full API.
+Methods: `games_like`, `recommend`, `game_facts`, `find_game_by_description`,
+`trending`, `new_releases`, `search_games`, plus `call_tool` / `list_tools`
+for anything added to the MCP server later. See
+[`python/README.md`](python/README.md) for the full API.
 
 ## Smoke test
 
 [`scripts/smoke_test.py`](scripts/smoke_test.py) uses only the Python standard
-library. It runs MCP `initialize`, `tools/list` and a `games_like` call, the
-two REST endpoints, a not-found case and the OpenAPI document:
+library. It runs MCP `initialize`, `tools/list`, `games_like` and
+`recommend`, the REST endpoints, a not-found case and the OpenAPI document:
 
 ```console
 $ python scripts/smoke_test.py
 ok    MCP initialize: imho.run game recommendations 1.0.0, protocol 2025-06-18
-ok    MCP tools/list: find_game_by_description, game_facts, games_like
+ok    MCP tools/list: find_game_by_description, game_facts, games_like, library_recs, new_releases, recommend, search_games, trending
 ok    MCP games_like: Hollow Knight: Silksong; Ori and the Blind Forest: Definitive Edition; Nine Sols
+ok    MCP recommend: Starbound; Project Zomboid; Core Keeper
 ok    REST games-like: seed Stardew Valley, 3 co-op picks
 ok    REST game-facts: Hades (2020), Deck: verified
 ok    REST not found: 404 not_found
-ok    OpenAPI: OpenAPI 3.1.0, 2 paths
+ok    REST trending: ready: Kingdom Rush  - Tower Defense; Ori and the Will of the Wisps; The Bell Echoes
+ok    REST new-releases: ACE COMBAT 8: WINGS OF THEVE; Valheim; CONTROL Resonant
+ok    REST search: Hollow Knight (367520); Hollow Knight: Silksong (1030300)
+ok    OpenAPI: OpenAPI 3.1.0, 7 paths
 PASS
 ```
+
+(`library_recs`, recommendations from a public Steam library, is listed by the
+server but not documented here yet.)
 
 `--find` also calls `find_game_by_description`, which counts against its
 daily limit. `--base-url` points it at another deployment.
@@ -344,25 +515,17 @@ daily limit. `--base-url` points it at another deployment.
 
 `.github/workflows/publish-python.yml` publishes to PyPI with
 [Trusted Publishing](https://docs.pypi.org/trusted-publishers/) (no API token)
-when a tag `python-v<version>` is pushed. One-time setup by the repository
-owner:
+when a tag `python-v<version>` is pushed. The PyPI project `imho` trusts
+owner `0x216`, repository `imho-mcp`, workflow `publish-python.yml`,
+environment `pypi`; if that publisher is ever removed, add it again under
+**Your account → Publishing** on pypi.org with those four values.
 
-1. Sign in to <https://pypi.org> (create an account and enable 2FA if needed).
-2. Go to **Your account → Publishing** (<https://pypi.org/manage/account/publishing/>).
-3. Under **Add a new pending publisher → GitHub**, enter:
-   - PyPI Project Name: `imho`
-   - Owner: `0x216`
-   - Repository name: `imho-mcp`
-   - Workflow name: `publish-python.yml`
-   - Environment name: `pypi`
-4. Click **Add**. The pending publisher becomes the project on the first upload.
-
-Then release:
+To release:
 
 ```bash
-# bump python/src/imho/_version.py first if needed
-git tag python-v0.1.0
-git push origin python-v0.1.0
+# bump python/src/imho/_version.py first
+git tag python-v0.2.0
+git push origin python-v0.2.0
 ```
 
 The workflow checks that the tag matches `_version.py`, runs the tests, builds

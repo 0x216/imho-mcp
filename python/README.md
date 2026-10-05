@@ -1,20 +1,18 @@
 # imho (Python client for imho.run)
 
 A small typed client for the [imho.run](https://imho.run) API for AI assistants:
-Steam games like any game you name, facts about one game, and identifying a
-game from a description. It wraps the public REST endpoints under
-`https://imho.run/api/agent/` and the MCP endpoint `https://imho.run/mcp`.
-The API is free, read-only and needs no key.
+Steam games like any game you name, recommendations from several games with
+filters, facts about one game, what is trending and newly released on Steam,
+title search, and identifying a game from a description. It wraps the public
+REST endpoints under `https://imho.run/api/agent/` and the MCP endpoint
+`https://imho.run/mcp`. The API is free, read-only and needs no key.
 
-> **Not on PyPI yet.** Until the first release, install from GitHub:
->
-> ```bash
-> pip install "git+https://github.com/0x216/imho-mcp#subdirectory=python"
-> ```
->
-> After the first release this becomes `pip install imho`.
+```bash
+pip install imho
+```
 
-Requires Python 3.9+ and [httpx](https://www.python-httpx.org/).
+Requires Python 3.9+ and [httpx](https://www.python-httpx.org/). Source,
+issues and the MCP setup for assistants: <https://github.com/0x216/imho-mcp>.
 
 ## Usage
 
@@ -52,6 +50,45 @@ Returns a dict with `seed` (the game that was matched), `other_matches`,
 `results` (each with `rank`, `appid`, `name`, `url`, `steam_url`, `why`,
 `year`, `price`, `steam_deck`, `reviews`, `genres`), `list_url` and
 `attribution`.
+
+### recommend
+
+For several games, more filters, or what the user wants in their own words:
+
+```python
+recs = imho.recommend(
+    ["Stardew Valley", "Terraria"],   # 1-3 seed games
+    n=10,                              # 1..24
+    preferences="cozy farming, no horror",   # free text, read as Steam tags
+    coop=True,                         # also "online" / "local"
+    exclude=["pvp", "grind"],          # pvp, microtransactions, hard, grind, early_access, vr_only
+    exclude_tags=["Anime"],            # Steam tags to leave out
+    year_min=2015, year_max=None,      # release years (year_max defaults to this year)
+    upcoming=False,                    # True: include unreleased games
+    popularity_bias=-0.5,              # -1 more niche ... 1 more popular
+    free=False, steam_deck=None, lang="en",
+)
+for game in recs["results"]:
+    print(game["name"], "-", game["why"])
+recs["preferences"]["prefer_tags"], recs["preferences"]["avoid_tags"]
+# (['Farming Sim'], ['Horror'])
+```
+
+To refine after the user reacts, call again with `liked=[...]` (fills free
+seed slots, 3 seeds in all) and `disliked=[...]` (never recommended again).
+
+### trending, new_releases, search_games
+
+```python
+imho.trending(kind="rising", n=10)      # or kind="breakouts" for new games taking off
+imho.new_releases(n=10)                 # well-rated releases of the last 30 days
+imho.new_releases(upcoming=True, coop=True)
+imho.search_games("hollow kn", n=5)     # appid, year and links per match
+```
+
+Trending picks carry `reviews_week` and `reviews_growth_pct`; new releases
+carry `release_date`. While trending data is still being collected,
+`trending()` returns `status: "collecting"` and an empty `results`.
 
 ### game_facts
 
@@ -117,7 +154,8 @@ All of them subclass `ImhoError`, which has `detail`, `code` and `status`.
 ## Limits and attribution
 
 30 requests a minute and 1,000 a day per IP; `find_game_by_description` 3 a
-minute and 20 a day. Responses are cached on the server.
+minute and 20 a day; `recommend` 10 new (uncached) combinations a minute and
+200 a day. Responses are cached on the server.
 
 If you show the results to people, credit imho.run ("Recommendations by
 imho.run") and link each game's `url`. Every response has an `attribution`
