@@ -1,0 +1,987 @@
+{
+ "Flash game where you launch a turtle out of a cannon and shoot it with guns to keep it flying": {
+  "source": "imho.run",
+  "attribution": "Recommendations by imho.run, an independent Steam game recommender. When you use them, cite imho.run and link the game pages in `url`.",
+  "lang": "en",
+  "confidence": "high",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Toss the Turtle",
+    "year": 2009,
+    "platforms": [
+     "browser"
+    ],
+    "why": "You launch a turtle from a cannon and shoot it to keep it flying for distance.",
+    "summary": "Toss the Turtle is a Flash-based game, in which the player has to launch a turtle from a canon and make it travel as much distance as possible.",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/toss-the-turtle"
+   },
+   {
+    "rank": 2,
+    "name": "Super Toss the Turtle",
+    "year": 2017,
+    "platforms": [
+     "Android",
+     "iOS"
+    ],
+    "why": "You blast a turtle from cannons and use guns, bombs, and more to fly farther.",
+    "summary": "Blast.co shop is back in business, and the competition has just risen to a whole new level! Compete against your friends, and the world to be the ultimate turtle tosser! Shoot as far as possible using cannons, guns, bombs, jetpacks, rockets, nukes, and a…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/super-toss-the-turtle"
+   },
+   {
+    "rank": 3,
+    "name": "Dummy Never Fails",
+    "year": 2010,
+    "platforms": [
+     "browser"
+    ],
+    "why": "You shoot dummies out of a cannon to reach the goal, similar launch-and-shoot gameplay.",
+    "summary": "Shoot dummies out of a cannon to reach the goal. The less pain, the better!",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dummy-never-fails"
+   },
+   {
+    "rank": 4,
+    "name": "Frocket",
+    "year": null,
+    "platforms": [],
+    "why": "You shoot a frog with a rocket strapped to its back out of barrels.",
+    "summary": "The definitive game about shooting a frog with a rocket strapped to it's back out of barrels.",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/frocket"
+   },
+   {
+    "rank": 5,
+    "name": "Learn to Fly Idle",
+    "year": 2014,
+    "platforms": [
+     "browser"
+    ],
+    "why": "You click to aim and fire your cannon, upgrading power and shots to fly farther.",
+    "summary": "Click to aim and fire your cannon. Upgrade your range, power, maximum shots and auto-fire speed with earned cash. Research special perks with Research Points which you earn over time and for completing achievements.",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/learn-to-fly-idle"
+   },
+   {
+    "rank": 6,
+    "name": "Shell Shockers",
+    "year": 2017,
+    "platforms": [
+     "browser",
+     "Android",
+     "iOS"
+    ],
+    "why": null,
+    "summary": "Shell Shockers is the world’s most popular egg-based multiplayer first person shooter io game! Take control of a heavily armed egg and battle real players across multiplayer maps in private or public arenas. The hit free to play FPS io game comes to your…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/shell-shockers"
+   },
+   {
+    "rank": 7,
+    "name": "Top Flight Turtle",
+    "year": 2010,
+    "platforms": [
+     "browser"
+    ],
+    "why": null,
+    "summary": "In the future, turtles will have jetpacks! Maybe. Well, probably not, but if they did they'd have to patrol their turf with laser guns and bombs. Defend your pond as Top Flight Turtle!",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/top-flight-turtle"
+   },
+   {
+    "rank": 8,
+    "name": "How to Fly a Cannon",
+    "year": null,
+    "platforms": [
+     "PC"
+    ],
+    "why": null,
+    "summary": "Your cannon isn't just a weapon - it's also how you launch into the air! Shoot towards the ground and fly skyward in this physics-based destruction game.",
+    "steam_appid": 4775060,
+    "url": "https://imho.run/games/4775060/how-to-fly-a-cannon",
+    "steam_url": "https://store.steampowered.com/app/4775060/",
+    "igdb_url": "https://www.igdb.com/games/how-to-fly-a-cannon"
+   },
+   {
+    "rank": 9,
+    "name": "Cannon Fodder",
+    "year": 1993,
+    "platforms": [
+     "Acorn Archimedes",
+     "Amiga CD32",
+     "blackberry",
+     "SNES",
+     "Linux",
+     "Genesis/MegaDrive"
+    ],
+    "why": null,
+    "summary": "Cannon Fodder is an action-strategy shoot 'em up game developed by Sensible Software and published by Virgin Interactive. The game is military-themed and based on shooting action but with a strategy game-style control system. The player directs troops…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/cannon-fodder"
+   },
+   {
+    "rank": 10,
+    "name": "Grow Cannon",
+    "year": 2011,
+    "platforms": [
+     "browser"
+    ],
+    "why": null,
+    "summary": "Use your 10 shots with your cannon in the correct locations in order to wake up a sleepy man!",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/grow-cannon"
+   }
+  ],
+  "tool_url": "https://imho.run/find-game",
+  "find_game_url": "https://imho.run/find-game#q=Flash%20game%20where%20you%20launch%20a%20turtle%20out%20of%20a%20cannon%20and%20shoot%20it%20with%20guns%20to%20keep%20it%20flying"
+ },
+ "PS2 game: a boy with horns escapes a huge castle while holding hands with a glowing princess": {
+  "source": "imho.run",
+  "attribution": "Recommendations by imho.run, an independent Steam game recommender. When you use them, cite imho.run and link the game pages in `url`.",
+  "lang": "en",
+  "confidence": "high",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Ico",
+    "year": 2001,
+    "platforms": [
+     "PS2"
+    ],
+    "why": "You remember the horned boy and the glowing girl in the huge castle, exactly Ico's premise.",
+    "summary": "An action-adventure game in which a boy is abandoned and taken to a massive castle by his people. After exploring it for a while, he meets a girl who speaks a different language than him, then decides to get both of them out of the castle grounds by…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/ico"
+   },
+   {
+    "rank": 2,
+    "name": "Ico",
+    "year": 2012,
+    "platforms": [
+     "PS3"
+    ],
+    "why": "This is the PS3 HD version of the same horned boy and glowing princess castle escape.",
+    "summary": "Experience the wonder and magic of one of the most beloved video games of all time, now available with full HD graphics, 7.1 surround sound, and stereoscopic 3D support. A young boy is locked away deep in a castle after horns started growing out of his…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/ico--1"
+   },
+   {
+    "rank": 3,
+    "name": "ICO: Limited Edition",
+    "year": 2002,
+    "platforms": [
+     "PS2"
+    ],
+    "why": "The Limited Edition of Ico, the PS2 game with the horned boy and glowing girl.",
+    "summary": "The Limited Edition of Ico for PS2 includes: - The Game - Special packaging sleeve - Art Cards",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/ico-limited-edition"
+   },
+   {
+    "rank": 4,
+    "name": "Shadow of the Colossus",
+    "year": 2005,
+    "platforms": [
+     "PS2"
+    ],
+    "why": "You might be mixing Ico with Shadow of the Colossus, but no princess or castle escape here.",
+    "summary": "An open-world action/adventure game in which a young wanderer, along with a stolen magical sword and his steed companion, trespasses a cursed land, makes a deal with an ancient being to bring a sacrificial victim back to life, and sets off to fulfill his…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/shadow-of-the-colossus"
+   },
+   {
+    "rank": 5,
+    "name": "The Last Guardian",
+    "year": 2016,
+    "platforms": [
+     "PS4"
+    ],
+    "why": "You may be thinking of The Last Guardian, but it's a boy and a creature, not a glowing princess.",
+    "summary": "In a strange and mystical land, a young boy discovers a mysterious creature with which he forms a deep, unbreakable bond. The unlikely pair must rely on each other to journey through towering, treacherous ruins filled with unknown dangers. Experience the…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/the-last-guardian"
+   },
+   {
+    "rank": 6,
+    "name": "Enslaved: Odyssey to the West",
+    "year": 2010,
+    "platforms": [
+     "PS3",
+     "PC",
+     "X360"
+    ],
+    "why": null,
+    "summary": "Follow a gripping, surprise-filled journey as two dissimilar characters form an uneasy partnership in order to survive through a perilous, post-apocalyptic America. 150 years in the future, war and destruction have left the world in ruins with few humans…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/enslaved-odyssey-to-the-west"
+   },
+   {
+    "rank": 7,
+    "name": "Prince of Persia: The Sands of Time",
+    "year": 2003,
+    "platforms": [
+     "XBOX",
+     "NGC",
+     "PC",
+     "PS2"
+    ],
+    "why": null,
+    "summary": "Deceived by the treacherous Vizier, I was led to unleash the Sands of Time curse upon the Sultan's kingdom. With little but an ancient dagger and a devious princess to aid me, I must undo my fatal mistake. Mine is a fight for survival… not glory. •…",
+    "steam_appid": 13600,
+    "url": "https://imho.run/games/13600/prince-of-persia-the-sands-of-time",
+    "steam_url": "https://store.steampowered.com/app/13600/",
+    "igdb_url": "https://www.igdb.com/games/prince-of-persia-the-sands-of-time"
+   },
+   {
+    "rank": 8,
+    "name": "Prince of Persia: The Two Thrones",
+    "year": 2005,
+    "platforms": [
+     "XBOX",
+     "NGC",
+     "PC",
+     "Mac",
+     "PS2"
+    ],
+    "why": null,
+    "summary": "Prince of Persia: The Two Thrones is an action-adventure game blending acrobatic platforming, puzzle-solving, and hack and slash combat, and the final chapter of the Sands of Time trilogy. Players guide the Prince through the city of Babylon, running along…",
+    "steam_appid": 13530,
+    "url": "https://imho.run/games/13530/prince-of-persia-the-two-thrones",
+    "steam_url": "https://store.steampowered.com/app/13530/",
+    "igdb_url": "https://www.igdb.com/games/prince-of-persia-the-two-thrones"
+   },
+   {
+    "rank": 9,
+    "name": "Haunting Ground",
+    "year": 2005,
+    "platforms": [
+     "PS3",
+     "PS2"
+    ],
+    "why": null,
+    "summary": "The story follows Fiona Belli, a young girl who the player must guide through Belli Castle and its immediate environments in an effort to escape. Along the way, players must solve puzzles, unlock doors and evade, hide or attempt to fight against the…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/haunting-ground"
+   },
+   {
+    "rank": 10,
+    "name": "Klonoa 2: Lunatea's Veil",
+    "year": 2001,
+    "platforms": [
+     "PS2"
+    ],
+    "why": null,
+    "summary": "Klonoa 2 puts players in the role of Klonoa, who, along with a new cast of friends, has stumbled into another adventure, this time to save the world of Lunatea and help unveil the mysteries of the enchanted world. The game features gameplay inspired by the…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/klonoa-2-lunateas-veil--1"
+   }
+  ],
+  "tool_url": "https://imho.run/find-game",
+  "find_game_url": "https://imho.run/find-game#q=PS2%20game%3A%20a%20boy%20with%20horns%20escapes%20a%20huge%20castle%20while%20holding%20hands%20with%20a%20glowing%20princess"
+ },
+ "Old PC strategy game where you are the evil one: you dig a dungeon, slap your imps and heroes invade": {
+  "source": "imho.run",
+  "attribution": "Recommendations by imho.run, an independent Steam game recommender. When you use them, cite imho.run and link the game pages in `url`.",
+  "lang": "en",
+  "confidence": "high",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Dungeon Keeper",
+    "year": 1997,
+    "platforms": [
+     "PC",
+     "Mac",
+     "DOS"
+    ],
+    "why": "You build and manage a dungeon, and heroes invade to steal your treasure.",
+    "summary": "Dungeon Keeper is a strategy video game in which the player attempts to build and manage a dungeon or lair while protecting it from invading 'hero' characters intent on stealing the player's accumulated treasures and killing various monsters. This was…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dungeon-keeper"
+   },
+   {
+    "rank": 2,
+    "name": "Dungeon Keeper 2",
+    "year": 1999,
+    "platforms": [
+     "PC"
+    ],
+    "why": "You are a dungeon keeper building and defending an underground dungeon from invading heroes.",
+    "summary": "Like its predecessor, players take the role of a dungeon keeper, building and defending an underground dungeon from the would-be heroes that invade it, as well as from other keepers. In the game's campaign mode, the player is charged with recovering the…",
+    "steam_appid": 2616460,
+    "url": "https://imho.run/games/2616460/dungeon-keeper-2",
+    "steam_url": "https://store.steampowered.com/app/2616460/",
+    "igdb_url": "https://www.igdb.com/games/dungeon-keeper-2"
+   },
+   {
+    "rank": 3,
+    "name": "War for the Overworld",
+    "year": 2015,
+    "platforms": [
+     "Linux",
+     "PC",
+     "Mac"
+    ],
+    "why": "You build your own dungeon and manage it against heroes, inspired by Dungeon Keeper.",
+    "summary": "Tired of invading dungeons? It's time you build your own. War for the Overworld is a Dungeon Management Game that employs your favourite aspects of the RPG, RTS and god game genres. In War for the Overworld, you will play as a malevolent Underlord with…",
+    "steam_appid": 230190,
+    "url": "https://imho.run/games/230190/war-for-the-overworld",
+    "steam_url": "https://store.steampowered.com/app/230190/",
+    "igdb_url": "https://www.igdb.com/games/war-for-the-overworld"
+   },
+   {
+    "rank": 4,
+    "name": "Dungeon Keeper 3",
+    "year": null,
+    "platforms": [
+     "PC"
+    ],
+    "why": "Cancelled Dungeon Keeper sequel where you manage evil creatures in an underground dungeon.",
+    "summary": "Dungeon Keeper 3: War for the Overworld is a cancelled title in the Dungeon Keeper franchise. Players were charged with managing evil creatures in an underground dungeon and protecting it against the stereotypical righteous and goodly adventurers that…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dungeon-keeper-3"
+   },
+   {
+    "rank": 5,
+    "name": "What Did I Do to Deserve This, My Lord?",
+    "year": 2007,
+    "platforms": [
+     "PSP"
+    ],
+    "why": "You are the God of Destruction creating a dungeon to fend off human hero invasions.",
+    "summary": "The goal of the game is clean and simple: As the God of Destruction, you must create a dungeon that is difficult and powerful enough to fend off human hero invasions. The dungeon must have a self-sustaining ecosystem, so players must strategically dig and…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/what-did-i-do-to-deserve-this-my-lord"
+   },
+   {
+    "rank": 6,
+    "name": "What Did I Do to Deserve This, My Lord!? 2",
+    "year": 2008,
+    "platforms": [
+     "PSP"
+    ],
+    "why": null,
+    "summary": "As the God of Destruction, you must create a dungeon that is both difficult and powerful enough to fend off the human hero invaders. The dungeon must have a self-sustaining ecosystem, so players must strategically dig and create a dungeon with a balanced…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/what-did-i-do-to-deserve-this-my-lord-2"
+   },
+   {
+    "rank": 7,
+    "name": "Impire",
+    "year": 2013,
+    "platforms": [
+     "PC"
+    ],
+    "why": null,
+    "summary": "In Impire, you take control the of demon Báal-Abaddon as he attempts to rebuild his mighty hell spawn form. With the aid of dozens of evil creatures big and small as well as an arsenal of spells, you will help him construct a dungeon underworld of…",
+    "steam_appid": 202130,
+    "url": "https://imho.run/games/202130/impire",
+    "steam_url": "https://store.steampowered.com/app/202130/",
+    "igdb_url": "https://www.igdb.com/games/impire"
+   },
+   {
+    "rank": 8,
+    "name": "Dungeons",
+    "year": 2011,
+    "platforms": [
+     "PC"
+    ],
+    "why": null,
+    "summary": "Dungeons follows the misadventures of the foremost of all Dungeon Lords, who spends his time luring heroes into his labyrinthine creations with the promise of treasure and a good fight--only to be trapped by his ingenious devices. Once they are in his…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dungeons"
+   },
+   {
+    "rank": 9,
+    "name": "Dungeons 2",
+    "year": 2015,
+    "platforms": [
+     "PS4",
+     "Linux",
+     "PC",
+     "Mac"
+    ],
+    "why": null,
+    "summary": "The Dungeon Lord is back – and this time he’s serious! In Dungeons 2, fulfil the Dungeon Lord’s insatiable quest for vengeance by recruiting fearsome new monsters from all corners of the underworld in order to undertake his evil bidding. Taking over the…",
+    "steam_appid": 262280,
+    "url": "https://imho.run/games/262280/dungeons-2",
+    "steam_url": "https://store.steampowered.com/app/262280/",
+    "igdb_url": "https://www.igdb.com/games/dungeons-2"
+   },
+   {
+    "rank": 10,
+    "name": "Dungeons 3",
+    "year": 2017,
+    "platforms": [
+     "PS4",
+     "Linux",
+     "PC",
+     "Mac",
+     "XONE"
+    ],
+    "why": null,
+    "summary": "Unleash your dark side by creating a unique underground dungeon from a huge array of rooms, traps and structures. Raise the most terrifying army the world has ever seen, by choosing from despicable creatures such as orcs, succubae, zombies and much, much…",
+    "steam_appid": 493900,
+    "url": "https://imho.run/games/493900/dungeons-3",
+    "steam_url": "https://store.steampowered.com/app/493900/",
+    "igdb_url": "https://www.igdb.com/games/dungeons-3"
+   }
+  ],
+  "tool_url": "https://imho.run/find-game",
+  "find_game_url": "https://imho.run/find-game#q=Old%20PC%20strategy%20game%20where%20you%20are%20the%20evil%20one%3A%20you%20dig%20a%20dungeon%2C%20slap%20your%20imps%20and%20heroes%20invade"
+ },
+ "Racing game with tiny toy cars on a breakfast table, a pool table and a school desk": {
+  "source": "imho.run",
+  "attribution": "Recommendations by imho.run, an independent Steam game recommender. When you use them, cite imho.run and link the game pages in `url`.",
+  "lang": "en",
+  "confidence": "medium",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Micro Machines",
+    "year": 1991,
+    "platforms": [
+     "NES"
+    ],
+    "why": "You race tiny toy cars on everyday surfaces like breakfast tables and desks in this classic miniature racer.",
+    "summary": "Micro Machines is a classic racing game. Simple, fast-paced and lots of fun. You are given the control of miniature cars, choppers, speedboats, racecars, tanks, jeeps, formulas and many more vehicles to choose and about 20 different tracks to drive on.…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micro-machines"
+   },
+   {
+    "rank": 2,
+    "name": "Micro Machines 2: Turbo Tournament",
+    "year": 1994,
+    "platforms": [
+     "SNES",
+     "Genesis/MegaDrive",
+     "DOS"
+    ],
+    "why": "You get miniature cars racing on household surfaces, with the same tiny-scale tabletop tracks you remember.",
+    "summary": "Micro Machines 2: Turbo Tournament featured cars that require different handling techniques for each course and also hovercraft and helicopters. There are different playing modes including \"head-to-head\", in which each player earns points by driving a full…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micro-machines-2-turbo-tournament"
+   },
+   {
+    "rank": 3,
+    "name": "Micro Machines V3",
+    "year": 1997,
+    "platforms": [
+     "PC",
+     "PS1"
+    ],
+    "why": "You race miniature cars with weapons on oversized everyday-object tracks, matching your toy-car tabletop memory.",
+    "summary": "Micro Machines V3 takes the immensely popular miniature-scale racing series to a new level by adding weapons and power-ups to the fray. Now you can grab turbo charges for bursts of speed or blast away opponents with grenades and force-fields. For the first…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micro-machines-v3"
+   },
+   {
+    "rank": 4,
+    "name": "Micro Machines V4",
+    "year": 2006,
+    "platforms": [
+     "PC",
+     "PSP",
+     "NDS",
+     "PS2"
+    ],
+    "why": "You drive miniature cars on tracks built from everyday objects, fitting the tiny toy-car racing you described.",
+    "summary": "Mixing miniature mayhem with maximum multiplayer racing, Micro Machines v4 features knockabout, breakneck racing in the fastest scale miniatures, complete with explosive weapon power-ups. Letting you loose with hundreds of vehicles, each with distinctive…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micro-machines-v4"
+   },
+   {
+    "rank": 5,
+    "name": "Micro Machines 64 Turbo",
+    "year": 1999,
+    "platforms": [
+     "N64"
+    ],
+    "why": "You race tiny toy vehicles on household-scale tracks in this N64 entry of the miniature racing series.",
+    "summary": "With a quirky mix of toy car racers and sophisticated gameplay, Micro Machines 64 Turbo guarantees to be a refreshing addition to the stable of standard racing games. The wide variety of vehicles featured includes Formula 1 racers, speed boats, monster…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micro-machines-64-turbo"
+   },
+   {
+    "rank": 6,
+    "name": "MicroMachines",
+    "year": 2002,
+    "platforms": [
+     "XBOX",
+     "NGC",
+     "PS2"
+    ],
+    "why": null,
+    "summary": "In this 3D remake of the original miniature racing game, players can compete on 24 different race tracks with 48 vehicles including toy cars, motorcycles, boats and more, using one of 8 difference characters. As in the original, four vehicles are on track…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/micromachines--1"
+   },
+   {
+    "rank": 7,
+    "name": "Toybox Turbos",
+    "year": 2014,
+    "platforms": [
+     "PS3",
+     "PC",
+     "X360"
+    ],
+    "why": null,
+    "summary": "Fire up the fun as Codemasters reboots the classic table top racing experience in Toybox Turbos.",
+    "steam_appid": 287260,
+    "url": "https://imho.run/games/287260/toybox-turbos",
+    "steam_url": "https://store.steampowered.com/app/287260/",
+    "igdb_url": "https://www.igdb.com/games/toybox-turbos"
+   },
+   {
+    "rank": 8,
+    "name": "Table Top Racing",
+    "year": 2014,
+    "platforms": [
+     "Android",
+     "iOS",
+     "Vita"
+    ],
+    "why": null,
+    "summary": "Table Top Racing Free is the multi-award winning, combat-racer brought to you by the co-creator of Sony's blockbuster PlayStation franchise 'WipEout'. With console-quality graphics and intensifying gameplay, it offers countless hours of fun and a real…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/table-top-racing"
+   },
+   {
+    "rank": 9,
+    "name": "Super Toy Cars",
+    "year": 2014,
+    "platforms": [
+     "PS4",
+     "PC",
+     "Mac",
+     "WiiU",
+     "XONE",
+     "Switch"
+    ],
+    "why": null,
+    "summary": "Super Toy Cars is a tabletop arcade combat racing game featuring fast and cool looking cars, impressive tracks made of everyday objects and a bunch of power-ups that will let you destroy your opposition. Collect all cars and upgrades to keep up with…",
+    "steam_appid": 116100,
+    "url": "https://imho.run/games/116100/super-toy-cars",
+    "steam_url": "https://store.steampowered.com/app/116100/",
+    "igdb_url": "https://www.igdb.com/games/super-toy-cars"
+   },
+   {
+    "rank": 10,
+    "name": "Room Zoom: Race for Impact",
+    "year": 2003,
+    "platforms": [
+     "XBOX",
+     "NGC",
+     "PC",
+     "PS2"
+    ],
+    "why": null,
+    "summary": "In the twisted Room Zoom manor, you must use everything under the roof to hone your driving skills and take the checkered flag. Room Zoom puts you in the driver's seat of toy cars to race through every room in the house, including a spooky lab and a hidden…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/room-zoom-race-for-impact"
+   }
+  ],
+  "tool_url": "https://imho.run/find-game",
+  "find_game_url": "https://imho.run/find-game#q=Racing%20game%20with%20tiny%20toy%20cars%20on%20a%20breakfast%20table%2C%20a%20pool%20table%20and%20a%20school%20desk"
+ },
+ "Side-scroller where you are an earthworm in a robotic space suit and use your own head as a whip": {
+  "source": "imho.run",
+  "attribution": "Recommendations by imho.run, an independent Steam game recommender. When you use them, cite imho.run and link the game pages in `url`.",
+  "lang": "en",
+  "confidence": "high",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Earthworm Jim",
+    "year": 1994,
+    "platforms": [
+     "Wii",
+     "Genesis/MegaDrive",
+     "Game Boy",
+     "Game Gear",
+     "Linux",
+     "PC"
+    ],
+    "why": "You're a worm in a cyber-suit who whips enemies with your own head.",
+    "summary": "A crow is chasing a worm named Jim while in outer space Psy-Crow is chasing a renegade ship. The ship's captain has stolen an ultra-high-tech-indestructible-super-space-cyber-suit and Queen Slug-for-a-Butt has ordered Psy-Crow to get it, since it can make…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim"
+   },
+   {
+    "rank": 2,
+    "name": "Earthworm Jim 2",
+    "year": 1995,
+    "platforms": [
+     "Wii",
+     "Genesis/MegaDrive",
+     "Linux",
+     "PC",
+     "DOS"
+    ],
+    "why": "You continue Jim's side-scrolling adventures, whipping enemies with your head.",
+    "summary": "From Evil the Cat’s’Circus of the Scars’ to the planet of Meat, join Jim on a madcap chase across the galaxy. Saving cows, thwarting lawyers and outsmarting Psy-Crow are all in a day’s work for Jim. Are you up to the challenge? Can you handle the awesome…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-2"
+   },
+   {
+    "rank": 3,
+    "name": "Earthworm Jim 3D",
+    "year": 1999,
+    "platforms": [
+     "N64",
+     "PC"
+    ],
+    "why": null,
+    "summary": "Earthworm Jim 3D is a platform game, the third in the Earthworm Jim series. It is a sequel to Earthworm Jim and Earthworm Jim 2, and the first game in the series to not be developed by Shiny Entertainment, which had recently instituted a strict \"no…",
+    "steam_appid": 41600,
+    "url": "https://imho.run/games/41600/earthworm-jim-3d",
+    "steam_url": "https://store.steampowered.com/app/41600/",
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-3d"
+   },
+   {
+    "rank": 4,
+    "name": "Earthworm Jim: Menace 2 the Galaxy",
+    "year": 1999,
+    "platforms": [
+     "GBC"
+    ],
+    "why": null,
+    "summary": "Earthworm Jim is back, and he's brought a ton of mayhem and destruction with him! EARTHWORM JIM: Menace 2 the Galaxy is the second Game Boy Color adventure for everyone's favorite worm-turned-superhero. Playing as Jim in this one-player action game, you…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-menace-2-the-galaxy"
+   },
+   {
+    "rank": 5,
+    "name": "Earthworm Jim HD",
+    "year": 2010,
+    "platforms": [
+     "PS3",
+     "Win Phone",
+     "X360",
+     "XONE"
+    ],
+    "why": null,
+    "summary": "Earthworm Jim HD is a high definition remake of the original Earthworm Jim video game. The main addition to the gameplay is the inclusion of a 4 player cooperative online multi-player mode. The game contains new levels, not present in the original release,…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-hd"
+   },
+   {
+    "rank": 6,
+    "name": "Earthworm Jim: Special Edition",
+    "year": 1995,
+    "platforms": [
+     "PC",
+     "Sega CD"
+    ],
+    "why": null,
+    "summary": "The game's Special Edition was released for the Sega Genesis add-on, the Sega CD. It was based on the Genesis version, contained all of its levels, plus some extended section to the levels and a single completely new level, titled \"Big Bruty\", a new…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-special-edition"
+   },
+   {
+    "rank": 7,
+    "name": "Earthworm Jim 2",
+    "year": 2002,
+    "platforms": [
+     "GBA"
+    ],
+    "why": null,
+    "summary": null,
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/earthworm-jim-2--3"
+   },
+   {
+    "rank": 8,
+    "name": "Worms",
+    "year": 1995,
+    "platforms": [
+     "Amiga CD32",
+     "SNES",
+     "Genesis/MegaDrive",
+     "PC",
+     "Mac",
+     "DOS"
+    ],
+    "why": null,
+    "summary": "Worms is a turn-based strategy game that combines tactical decision-making with elements of randomness. Players control teams of worms and take turns using a wide range of weapons and tools to defeat opposing teams, resulting in varied gameplay outcomes.…",
+    "steam_appid": 70640,
+    "url": "https://imho.run/games/70640/worms",
+    "steam_url": "https://store.steampowered.com/app/70640/",
+    "igdb_url": "https://www.igdb.com/games/worms"
+   },
+   {
+    "rank": 9,
+    "name": "Worms 2",
+    "year": 1997,
+    "platforms": [
+     "PC"
+    ],
+    "why": null,
+    "summary": "Worms 2 is a turn-based strategy game, with each team moving in a randomly determined sequence across two-dimensional terrain. During a single turn, a team can only move one of its worms. Worms can crawl and jump, as well as swing by ninja-rope, parachute,…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/worms-2"
+   },
+   {
+    "rank": 10,
+    "name": "Worms Armageddon",
+    "year": 1999,
+    "platforms": [
+     "PS3",
+     "N64",
+     "PC",
+     "PS1",
+     "PSP",
+     "DC"
+    ],
+    "why": null,
+    "summary": "Those intrepid invertebrates return with a vengeance in the much-loved Worms Armageddon. It’s a whole new can of worms! It’s hilarious fun that you can enjoy on your own or with all your friends. Worms Armageddon was originally developed as an expansion…",
+    "steam_appid": 217200,
+    "url": "https://imho.run/games/217200/worms-armageddon",
+    "steam_url": "https://store.steampowered.com/app/217200/",
+    "igdb_url": "https://www.igdb.com/games/worms-armageddon"
+   }
+  ],
+  "tool_url": "https://imho.run/find-game",
+  "find_game_url": "https://imho.run/find-game#q=Side-scroller%20where%20you%20are%20an%20earthworm%20in%20a%20robotic%20space%20suit%20and%20use%20your%20own%20head%20as%20a%20whip"
+ },
+ "Игра на PS1: маленький фиолетовый дракончик собирает кристаллы и освобождает других драконов": {
+  "source": "imho.run",
+  "attribution": "Рекомендации imho.run, независимого рекомендателя игр Steam. Если используете их, укажите imho.run и дайте ссылки на страницы игр из `url`.",
+  "lang": "ru",
+  "confidence": "high",
+  "results": [
+   {
+    "rank": 1,
+    "name": "Spyro the Dragon",
+    "year": 1998,
+    "platforms": [
+     "PS3",
+     "PS1",
+     "PSP"
+    ],
+    "why": "Фиолетовый дракончик Спайро собирает кристаллы и освобождает других драконов — это точно первая игра.",
+    "summary": "Spyro the Dragon is a platform game developed by Insomniac Games for the PlayStation. It stars the title character, a young purple dragon named Spyro and his dragonfly friend, Sparx, and is the first game in the Spyro the Dragon series. The first game was…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/spyro-the-dragon"
+   },
+   {
+    "rank": 2,
+    "name": "Spyro 2: Ripto's Rage!",
+    "year": 1999,
+    "platforms": [
+     "PS3",
+     "PS1",
+     "PSP"
+    ],
+    "why": "Тут Спайро тоже фиолетовый дракон, но действие в Аваларе, а не освобождение драконов.",
+    "summary": "Spyro 2: Ripto's Rage! is the second game in the Spyro the Dragon series. In this game, Spyro is placed in the land of Avalar rather than the Dragon Worlds. Gameplay flows like the original game Spyro the Dragon, with few variations in control and Spyro's…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/spyro-2-ripto-s-rage"
+   },
+   {
+    "rank": 3,
+    "name": "Spyro: Year of the Dragon",
+    "year": 2000,
+    "platforms": [
+     "PS3",
+     "PS1",
+     "PSP"
+    ],
+    "why": "Спайро фиолетовый, но тут он собирает 150 яиц, а не освобождает драконов.",
+    "summary": "Spyro: Year of the Dragon is the third installment in the Spyro series and the last Spyro game Insomniac developed. In this 3D adventure, Spyro have to retrieve 150 eggs that the evil Sorceress has stolen from Dragonworld. To survive, he will have to…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/spyro-year-of-the-dragon"
+   },
+   {
+    "rank": 4,
+    "name": "The Legend of Spyro: A New Beginning",
+    "year": 2006,
+    "platforms": [
+     "XBOX",
+     "NGC",
+     "PS2"
+    ],
+    "why": "Спайро фиолетовый, но это перезапуск 2006 года, не PS1 и без сбора кристаллов.",
+    "summary": "The Legend of Spyro: A New Beginning explores the true origins of Spyro as you embark on a dangerous, combat-driven quest that will bring you face to face with the Dark Master's ultimate creation, Cynder. Experience the true power of the purple dragon as…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/the-legend-of-spyro-a-new-beginning"
+   },
+   {
+    "rank": 5,
+    "name": "Dragon Tales: Dragon Seek",
+    "year": 2000,
+    "platforms": [
+     "PS1"
+    ],
+    "why": "Тут есть драконы и сбор предметов, но это игра по мультику Dragon Tales, не про фиолетового дракончика.",
+    "summary": "Dragon Tales: Dragon Seek is an interactive product that is part of the encompassing multi-media project centered on the PBS television series Dragon Tales. The game features puzzles and activities designed to encourage creative problem-solving and bolster…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dragon-tales-dragon-seek"
+   },
+   {
+    "rank": 6,
+    "name": "Dragon Tales: Dragon Adventures",
+    "year": 2001,
+    "platforms": [
+     "GBC"
+    ],
+    "why": null,
+    "summary": "Wish on Dragon Scale and get whisked away to Dragon Land. Then choose your adventure from five different fun-filled stories. While searching for Dragon Berry cupcakes, gems, and musical Notes you will travel to magical places like Puzzlewood in the Crystal…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dragon-tales-dragon-adventures"
+   },
+   {
+    "rank": 7,
+    "name": "Blazing Dragons",
+    "year": 1996,
+    "platforms": [
+     "Saturn",
+     "PS1"
+    ],
+    "why": null,
+    "summary": "A video game based on the television series was created for the Sega Saturn and PlayStation consoles. In a twist on the legend of King Arthur, the player controls Flicker, who lives in Camelhot castle and is in love with Princess Flame, but is not eligible…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/blazing-dragons"
+   },
+   {
+    "rank": 8,
+    "name": "3D Dragon Castle",
+    "year": 1999,
+    "platforms": [
+     "PC",
+     "Mac"
+    ],
+    "why": null,
+    "summary": "In 3D Dragon Duel, you (as a dragon) must clear out several castles from other enemy dragons and dinosaurs, while avoiding deadly lava pits and floating spiked balls.",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/3d-dragon-castle"
+   },
+   {
+    "rank": 9,
+    "name": "Dragon Seeds",
+    "year": 1998,
+    "platforms": [
+     "PS3",
+     "PS1",
+     "PSP"
+    ],
+    "why": null,
+    "summary": "Enter the world of Dragon Seeds! As a Dragonsage you will need to genetically engineer, and train (essentially \"ranch\") your dragons for armed combat. Plus, you can use memory card data from any game to create high powered dragons. Dragon Seeds features a…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/dragon-seeds"
+   },
+   {
+    "rank": 10,
+    "name": "The Mystic Dragoons",
+    "year": 1999,
+    "platforms": [
+     "PS3",
+     "PS1",
+     "PSP"
+    ],
+    "why": null,
+    "summary": "The hero (a dragon knight blood boy) was born and raised in the Dragon field, and he will be involved in the war between the Dragon Knights and their rivals. The game begins when the small village where the hero lives and where they train and take care of…",
+    "steam_appid": null,
+    "url": null,
+    "steam_url": null,
+    "igdb_url": "https://www.igdb.com/games/the-mystic-dragoons"
+   }
+  ],
+  "tool_url": "https://imho.run/ru/find-game",
+  "find_game_url": "https://imho.run/ru/find-game#q=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BD%D0%B0%20PS1%3A%20%D0%BC%D0%B0%D0%BB%D0%B5%D0%BD%D1%8C%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D1%87%D0%B8%D0%BA%20%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%BA%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BB%D0%BB%D1%8B%20%D0%B8%20%D0%BE%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B0%D0%B5%D1%82%20%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D1%85%20%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%BE%D0%B2"
+ }
+}

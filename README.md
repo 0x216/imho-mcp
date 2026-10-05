@@ -11,6 +11,7 @@ and ships a small **Python client**.
 - OpenAPI 3.1: <https://imho.run/openapi.json> (importable as a ChatGPT GPT Action)
 - Docs: <https://imho.run/developers>
 - MCP Registry name: `run.imho/games`
+- Hugging Face Space: link TBD (a Gradio demo of `find_game_by_description` and `games_like`, source in [`examples/hf-space/`](examples/hf-space/))
 
 Free, read-only, no key and no account. The server itself runs on imho.run;
 its source is not in this repository. What is here: documentation, the
@@ -473,6 +474,12 @@ Methods: `games_like`, `recommend`, `game_facts`, `find_game_by_description`,
 `trending`, `new_releases`, `search_games`, plus `call_tool` / `list_tools`
 for anything added to the MCP server later. See
 [`python/README.md`](python/README.md) for the full API.
+
+## Hugging Face Space
+
+[`examples/hf-space/`](examples/hf-space/) is a Gradio app, "Find a forgotten game", that
+calls `https://imho.run/mcp` for `find_game_by_description` and `games_like`. It runs no model.
+Live Space: link TBD.
 
 ## Smoke test
 
