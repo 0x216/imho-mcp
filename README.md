@@ -26,7 +26,7 @@ the Python client.
 | `game_facts` | Game facts | Public facts about one Steam game: year, developers, genres, top tags, price, Steam Deck status, review numbers, a summary mined from player reviews (difficulty, length, session shape, co-op, hooks, dealbreakers) and links. | `GET /api/agent/game-facts` |
 | `find_game_by_description` | Find a game by description | Identifies a game from what the user remembers (plot, look, platform, era). Returns ranked candidates with a reason each, a `confidence`, and a `find_game_url` that opens imho.run's Find a game page with the description filled in. Runs a language model, so it is slower and has a lower limit. | MCP only |
 | `trending` | Trending on Steam | Steam games trending now: `rising` (established games gaining reviews against their own baseline) or `breakouts` (new games taking off), with reviews this week and growth in %. | `GET /api/agent/trending` |
-| `new_releases` | New Steam releases | Well-rated Steam releases of the last 30 days (70%+ positive, 50+ positive reviews), or dated upcoming games; optionally co-op only. | `GET /api/agent/new-releases` |
+| `new_releases` | New Steam releases | Well-rated Steam releases of the last 30 days (70%+ positive, 50+ positive reviews), or dated upcoming games; optionally co-op only. Games that just left Early Access are marked `release_kind: "ea_exit"` (new launches: `"new"`); `ea_exits` keeps, drops or isolates them. | `GET /api/agent/new-releases` |
 | `search_games` | Search Steam games by title | Steam games by title (typos, partial names, Russian names and acronyms work): appid, year, imho.run page and Steam link. | `GET /api/agent/search` |
 
 All tools are annotated `readOnlyHint: true` and `destructiveHint: false`.
@@ -314,7 +314,7 @@ curl "https://imho.run/api/agent/search?q=hollow%20kn&n=5"
 | `GET /api/agent/recommend` | `seed` (1-3, repeat the parameter), `n` (1-24), `lang`, `free`, `coop`, `deck`, `exclude` (repeat or comma-separate), `exclude_tags` (repeat), `year_min`, `year_max`, `upcoming`, `popularity_bias` (-1..1), `preferences` (text), `liked` (repeat), `disliked` (repeat) |
 | `GET /api/agent/game-facts` | `q` (required), `lang` |
 | `GET /api/agent/trending` | `kind` (`rising`/`breakouts`), `n` (1-20), `lang` |
-| `GET /api/agent/new-releases` | `upcoming` (`true`: dated upcoming games), `coop`, `n` (1-20), `lang` |
+| `GET /api/agent/new-releases` | `upcoming` (`true`: dated upcoming games), `coop`, `ea_exits` (`include`/`exclude`/`only`, default `include`), `n` (1-20), `lang` |
 | `GET /api/agent/search` | `q` (required, 2-100 characters), `n` (1-10, default 5) |
 
 `find_game_by_description` is available only through MCP.
