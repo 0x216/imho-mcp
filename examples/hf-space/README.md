@@ -64,7 +64,9 @@ python app.py
 ```
 
 `python bake_examples.py` refreshes `examples.json` (it spaces calls 21 s
-apart and resumes if interrupted). Optional environment variables:
+apart and resumes if interrupted). imho.run maintainers run it with
+`IMHO_INTERNAL_KEY` set, so the bake calls are logged as internal and never
+used as training data; the Space itself never gets that key. Optional environment variables:
 `IMHO_FIND_PER_DAY`, `IMHO_FIND_PER_MINUTE`, `IMHO_FIND_PER_VISITOR_DAY`
 (local quota mirror), `IMHO_FIND_TIMEOUT_S`, `IMHO_MCP_URL`, `IMHO_MCP_FALLBACK_URL`.
 `IMHO_PARTNER_KEY` (a Space secret) is reserved for a dedicated imho.run quota:

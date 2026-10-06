@@ -8,15 +8,34 @@ Space's shared imho.run quota. Run it from your own machine (not the Space):
 
 It spaces calls 21 s apart to stay under imho.run's 3-a-minute limit for
 `find_game_by_description`, and saves after every answer, so a rerun resumes.
+
+Set IMHO_INTERNAL_KEY (imho.run maintainers) so the bake calls are logged as
+internal and never used as training data. Without it they look like real
+visitors' searches.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 
-from app import EXAMPLES_FILE, FIND_EXAMPLES, ImhoError, call_tool, detect_lang, normalize
+# Before importing app: it reads IMHO_PARTNER_KEY once, at import.
+_INTERNAL_KEY = os.environ.get("IMHO_INTERNAL_KEY", "").strip()
+if _INTERNAL_KEY:
+    os.environ["IMHO_PARTNER_KEY"] = _INTERNAL_KEY
+else:
+    print("note: IMHO_INTERNAL_KEY is not set; the calls count as real usage", file=sys.stderr)
+
+from app import (  # noqa: E402
+    EXAMPLES_FILE,
+    FIND_EXAMPLES,
+    ImhoError,
+    call_tool,
+    detect_lang,
+    normalize,
+)
 
 
 def main() -> int:
