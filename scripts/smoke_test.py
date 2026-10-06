@@ -8,12 +8,16 @@ Standard library only, so it runs anywhere with Python 3.8+:
                                             # (slow, counts against its 20/day limit)
 
 Exit code 0 when every check passes, 1 otherwise.
+
+imho.run maintainers: set IMHO_INTERNAL_KEY so these calls are logged as
+internal (left out of usage stats and never used as training data).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.parse
@@ -21,6 +25,7 @@ import urllib.request
 from typing import Any, Callable, Dict, List, Tuple
 
 UA = "imho-mcp-smoke-test/1.0 (+https://github.com/0x216/imho-mcp)"
+INTERNAL_KEY = os.environ.get("IMHO_INTERNAL_KEY", "").strip()
 EXPECTED_TOOLS = {
     "games_like",
     "recommend",
@@ -37,6 +42,8 @@ def http(
 ) -> Tuple[int, Dict[str, Any]]:
     data = None
     headers = {"User-Agent": UA, "Accept": "application/json, text/event-stream"}
+    if INTERNAL_KEY:
+        headers["X-Imho-Partner-Key"] = INTERNAL_KEY
     if body is not None:
         data = json.dumps(body).encode()
         headers["Content-Type"] = "application/json"
